@@ -21,7 +21,7 @@ def add_article(request):
     return render(request, 'article/add.html', {'form': form, 'message': messages})
 
 def table(request):
-    article = Article.objects.all()
+    article = Articles.objects.all()
     context = {
         'articles': article
     }

@@ -13,16 +13,20 @@
         </tr>
     </thead>
     <tbody>
+        {% for article in articles %}
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>{{ article.id }}</td>
+            <td>{{ article.name }}</td>
+            <td>{{ article.price }} GNF</td>
             <td>
                 <a href="#">Voir</a>
                 <a href="#">Modifier</a>
                 <a href="#">Supprimer</a>
             </td>
         </tr>
+        {% empty %}
+        <h3> No item in database </h3>
+        {% endfor %}
     </tbody>
 </table>
 {% endblock %}
