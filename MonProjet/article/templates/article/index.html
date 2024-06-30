@@ -3,13 +3,22 @@
 
 {% block section %}
 
+<div class="row">
+{% for article in articles %}
 <div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
+    {% if article.image %}
+    <img src="{{ article.image.url }}" class="card-img-top" alt="{{ article.name }}">
+      {% else %}
+      <h3 style="color:red;">No image found here!</h3>
+    {% endif %} 
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-  
+        <h5 class="card-title">{{ article.name }}</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>   
+{% empty %}
+<h3>No item in database</h3>
+{% endfor %}
+</div>
 {% endblock %}

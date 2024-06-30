@@ -1,7 +1,12 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from . models import Articles
 
 
 def index(request, *args, **kw):
-    return render(request, 'article/index.html')
+    article = Articles.objects.all()
+    
+    context = {
+        'articles': article
+    }
+    return render(request, 'article/index.html', context)
 
