@@ -17,7 +17,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from article.views import index, add_article, table
+from article.views import index, add_article, table, modifier
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -26,7 +26,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', index, name='index'),
     path('add/', add_article, name='add'),
-    path('table/', table, name='table'),    
+    path('table/', table, name='table'), 
+    path('modifier/<int:my_id>', modifier, name='modifier'),    
     path("admin/", admin.site.urls),
 ]
 if settings.DEBUG:

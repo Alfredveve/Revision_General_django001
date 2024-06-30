@@ -1,0 +1,15 @@
+{% extends "article/base.html" %}
+
+
+{% block section %}
+
+<h2> La modification de l'article </h2>
+<br><br>
+<h3 style="color:forestgreen">{{ message }}</h3>
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+      
+{% endblock %}

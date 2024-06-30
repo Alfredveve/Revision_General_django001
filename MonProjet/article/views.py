@@ -27,4 +27,13 @@ def table(request):
     }
     return render(request, 'article/table.html', context)
 
+def modifier(request, my_id):
+    obj = Articles.objects.get(id=my_id)
+    form = ArticlesForm(request.POST or None, request.FILES or None, instance=obj)
+    messages = ""
+    if request.method == 'POST' and form.is_valid():
+        form.save()
+        form = ArticlesForm()
+        messages = "We have successfully modified this article"
+    return render(request, 'article/modifier.html', {'form': form, 'message': messages})
 
